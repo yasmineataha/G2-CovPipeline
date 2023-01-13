@@ -1,0 +1,5 @@
+samples:
+    [RV417026_S15_L001, RV417027_S18_L001]
+
+reference_genome:
+    reference
