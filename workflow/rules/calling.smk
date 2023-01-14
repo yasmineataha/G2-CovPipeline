@@ -7,7 +7,8 @@ rule bcftools_mpileup:
     output:
         pileup="results/pileups/{sample}.pileup.bcf",
     params:
-        uncompressed_bcf=False,
+        uncompressed_bcf=config["rule_parameters"]["bcftools_mpileup"]["uncompressed_bcf"],
+        extra=config["rule_parameters"]["bcftools_mpileup"]["extra"]
     log:
         "logs/bcftools_mpileup/{sample}.log",
     wrapper:
@@ -20,8 +21,8 @@ rule bcftools_call:
     output:
         calls="results/mapped/{sample}.calls.vcf",
     params:
-        caller="-m",  # valid options include -c/--consensus-caller or -m/--multiallelic-caller
-        extra="--ploidy 1 -v",
+        caller=config["rule_parameters"]["bcftools_call"]["caller"],  # valid options include -c/--consensus-caller or -m/--multiallelic-caller
+        extra=config["rule_parameters"]["bcftools_call"]["extra"],
     log:
         "logs/bcftools_call/{sample}.log",
     wrapper:
@@ -34,5 +35,7 @@ rule filter_vcf:
         "results/mapped/{sample}.calls.vcf"
     output:
         "results/vcf/{sample}.filtered.vcf"
+    params:
+        extra=config["rule_parameters"]["filter_vcf"]["extra"],
     wrapper:
         "v1.21.1/bio/vcftools/filter"

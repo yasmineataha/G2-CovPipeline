@@ -1,0 +1,16 @@
+*.fasta
+*.fastq
+*.html
+*.json
+*.log
+*.flagstat
+*.bai
+*.bam
+*.bcf
+*.vcf
+*.idxstats
+*.fai
+workflow/report
+results/
+logs/
+.snakemake/

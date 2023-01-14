@@ -1,18 +1,25 @@
 
 configfile: "config/config.yaml"
 
+# get paired end samples name
 SAMPLES = config["samples"]
 
+# get reference genome
 genome = config["reference_genome"]
 
+# get adapters
+read_1_adapter = config["adapter"]["read_1"]
+read_2_adapter = config["adapter"]["read_2"]
 
 rule all:
     input:
         expand("results/vcf/{sample}.filtered.vcf", sample=SAMPLES),
         expand("results/mapped/{sample}.sorted.bam.flagstat", sample=SAMPLES),
-        expand("results/mapped/{sample}.sorted.bam.idxstats", sample=SAMPLES)
+        expand("results/mapped/{sample}.sorted.bam.idxstats", sample=SAMPLES),
+        expand("results/lineage_assignment/{sample}.csv", sample=SAMPLES)
 
 
 include: "rules/preprocess.smk"
 include: "rules/aligning.smk"
 include: "rules/calling.smk"
+include: "rules/lineage_assignment.smk"
