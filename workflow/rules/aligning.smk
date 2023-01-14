@@ -22,7 +22,7 @@ rule bwa_mem:
     log:
         "logs/bwa_mem/{sample}.log",
     params:
-        sorting="none",  # Can be 'none', 'samtools' or 'picard'.
+        sorting=config["rule_parameters"]["bwa_mem"]["sorting"],  # Can be 'none', 'samtools' or 'picard'.
     wrapper:
         "v1.21.1/bio/bwa/mem"
 
@@ -35,6 +35,8 @@ rule samtools_sort:
         "results/mapped/{sample}.sorted.bam",
     log:
         "logs/samtools_sort/{sample}.log",
+    params:
+        extra=config["rule_parameters"]["samtools_sort"]["extra"],
     wrapper:
         "v1.21.1/bio/samtools/sort"
 
@@ -45,6 +47,8 @@ rule samtools_index:
         "results/mapped/{sample}.sorted.bam.bai",
     log:
         "logs/samtools_index/{sample}.log",
+    params:
+        extra=config["rule_parameters"]["samtools_index"]["extra"],
     wrapper:
         "v1.21.1/bio/samtools/index"
 
@@ -57,7 +61,7 @@ rule samtools_flagstat:
     log:
         "logs/samtools_flagstat/{sample}.log",
     params:
-        extra="",  # optional params string
+        extra=config["rule_parameters"]["samtools_flagstat"]["extra"],  # optional params string
     wrapper:
         "v1.21.1-1-g03463da5/bio/samtools/flagstat"
 
@@ -71,6 +75,6 @@ rule samtools_idxstats:
     log:
         "logs/samtools/idxstats/{sample}.log",
     params:
-        extra="",  # optional params string
+        extra=config["rule_parameters"]["samtools_idxstats"]["extra"],  # optional params string
     wrapper:
         "v1.21.1-1-g03463da5/bio/samtools/idxstats"
