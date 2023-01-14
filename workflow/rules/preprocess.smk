@@ -10,4 +10,4 @@ rule trimming:
     conda:
         "../envs/fastp.yaml"
     shell:
-        "fastp -i {input.first} -I {input.second} -o {output.first} -O {output.second} -h {output.html_report} -j {output.json_report} --detect_adapter_for_pe"
+        "fastp -i {input.first} -I {input.second} -o {output.first} -O {output.second} -h {output.html_report} -j {output.json_report} --adapter_sequence {read_1_adapter} --adapter_sequence_r2 {read_2_adapter}"

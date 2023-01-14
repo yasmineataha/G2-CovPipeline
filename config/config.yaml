@@ -3,3 +3,7 @@ samples:
 
 reference_genome:
     reference
+
+adapter:
+    read_1: GCGAATTTCGACGATCGTTGCATTAACTCGCGAA
+    read_2: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT

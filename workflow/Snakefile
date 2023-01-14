@@ -1,10 +1,15 @@
 
 configfile: "config/config.yaml"
 
+# get paired end samples name
 SAMPLES = config["samples"]
 
+# get reference genome
 genome = config["reference_genome"]
 
+# get adapters
+read_1_adapter = config["adapter"]["read_1"]
+read_2_adapter = config["adapter"]["read_2"]
 
 rule all:
     input:

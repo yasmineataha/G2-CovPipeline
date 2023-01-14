@@ -34,7 +34,7 @@ rule samtools_sort:
     output:
         "results/mapped/{sample}.sorted.bam",
     log:
-        "{sample}.log",
+        "logs/samtools_sort/{sample}.log",
     wrapper:
         "v1.21.1/bio/samtools/sort"
 
@@ -55,7 +55,7 @@ rule samtools_flagstat:
     output:
         "results/mapped/{sample}.sorted.bam.flagstat",
     log:
-        "{sample}.log",
+        "logs/samtools_flagstat/{sample}.log",
     params:
         extra="",  # optional params string
     wrapper:
