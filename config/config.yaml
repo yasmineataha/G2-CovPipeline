@@ -2,7 +2,7 @@ samples:
     [RV417026_S15_L001, RV417027_S18_L001]
 
 reference_genome:
-    reference
+    NC_045512.2
 
 adapter:
     read_1: "GCGAATTTCGACGATCGTTGCATTAACTCGCGAA"
