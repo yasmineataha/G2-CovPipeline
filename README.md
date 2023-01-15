@@ -36,7 +36,6 @@ Config file is found under config/
     ```
 
 
-
 # Resources
 - Pipeline is based on:
     We made a few changes and used a few different tools/software
