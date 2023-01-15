@@ -10,6 +10,11 @@
 *.vcf
 *.idxstats
 *.fai
+*.amb
+*.ann
+*.bwt
+*.pac
+*.sa
 workflow/report
 results/
 logs/
