@@ -3,7 +3,6 @@ rule bcftools_mpileup:
     input:
         alignments="results/mapped/{sample}.sorted.bam",
         ref="data/reference/" + genome + ".fasta",  # this can be left out if --no-reference is in options
-        index="results/mapped/{sample}.sorted.bam.bai"
     output:
         pileup="results/pileups/{sample}.pileup.bcf",
     params:

@@ -3,7 +3,7 @@ rule bwa_index:
     input:
         "data/reference/" + genome + ".fasta"
     output:
-        idx=multiext("results/reference/" + genome + ".fasta", ".amb", ".ann", ".bwt", ".pac", ".sa"),
+        idx=multiext("data/reference/" + genome + ".fasta", ".amb", ".ann", ".bwt", ".pac", ".sa"),
     log:
         "logs/bwa_index/" + genome + ".log",
     params:
@@ -16,7 +16,7 @@ rule bwa_index:
 rule bwa_mem:
     input:
         reads=["results/trimmed/{sample}_1.trimmed.fastq", "results/trimmed/{sample}_2.trimmed.fastq"],
-        idx=multiext("results/reference/" + genome + ".fasta", ".amb", ".ann", ".bwt", ".pac", ".sa"),
+        idx=multiext("data/reference/" + genome + ".fasta", ".amb", ".ann", ".bwt", ".pac", ".sa"),
     output:
         "results/mapped/{sample}.bam",
     log:
@@ -40,6 +40,7 @@ rule samtools_sort:
     wrapper:
         "v1.21.1/bio/samtools/sort"
 
+#qc
 rule samtools_index:
     input:
         "results/mapped/{sample}.sorted.bam",
