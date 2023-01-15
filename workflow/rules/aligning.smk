@@ -7,7 +7,7 @@ rule bwa_index:
     log:
         "logs/bwa_index/" + genome + ".log",
     params:
-        algorithm="bwtsw",
+        algorithm=config["rule_parameters"]["bwa_index"]["algorithm"],
     wrapper:
         "v1.21.1/bio/bwa/index"
 
